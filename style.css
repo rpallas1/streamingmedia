@@ -1,0 +1,492 @@
+/* ---- VARIABLES ---- */
+:root {
+    --dark-blue-1: #020659;
+    --dark-blue-2: #020873;
+    --dark-blue-3: #030A8C;
+    --blue: #2104D9;
+    --light-blue-1: #0D8DFB;
+    --light-blue-2: #2699FB;
+    --maroon: #590242;
+}
+
+
+/* ---- GLOBAL STYLES ---- */
+body {
+    background-color: var(--dark-blue-1);
+    margin: 0 auto;
+    max-width: 375px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 1.25em;
+    color: white;
+    font-variant-caps: small-caps;
+    text-align: center;
+    margin: 0;
+    padding: 15px 0 5px 0;
+    position: absolute;
+    left: 130px;
+}
+
+h2, h3 {
+    font-size: 1em;
+}
+
+p, dl, dd {
+    font-size: 1em;
+    color: white;
+}
+
+
+/* ---- HEADER STYLES ---- */
+header {
+    background-color: var(--dark-blue-3);
+    position: fixed;
+    width: 375px;
+    height: 60px;
+    z-index: 10;
+}
+
+
+/* START NAV MENU STYLES */
+nav h2 {
+    visibility: hidden;
+    position: absolute;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: white;
+    transition: max-height .2s ease-out;
+}
+
+nav li a {
+    display: block;
+    padding: 20px;
+    border-right: 1px solid var(--blue);
+    text-decoration: none;
+    color: white;
+    background-color: var(--dark-blue-3);
+}
+
+nav li a:hover, nav input:hover {
+    background-color: var(--light-blue-2);
+} 
+
+nav ul {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+
+label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+}
+
+label span {
+    background-color: white;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+}
+
+label span:before, label span:after {
+    background: white;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+label span:before {
+    top: 5px;
+}
+
+label span:after {
+    top: -5px;
+}
+
+input {
+    display: none;
+}
+
+input:checked ~ ul {
+    max-height: 500px;
+}
+
+input:checked ~ label span {
+    background: transparent;
+}
+
+input:checked ~ label span:before {
+    transform: rotate(45deg);
+}
+
+input:checked ~ label span:after {
+    transform: rotate(-45deg);
+}
+
+input:checked ~ label:not(.steps) span:before,
+input:checked ~ label:not(.steps) span:after {
+    top: 0px;
+}
+/* END NAV MENU STYLES */
+
+
+/* ---- MAIN STYLES ---- */
+main {
+    background-color: white;
+    position: relative;
+    top: 60px;
+}
+
+main h2 {
+    background-color: white;
+    color: var(--maroon);
+    text-transform: uppercase;
+    padding: 20px 0 0 30px;
+    margin-bottom: 10px;
+}
+
+main h3 {
+    text-transform: uppercase;
+}
+
+main a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: var(--maroon);
+    width: 150px;
+    height: fit-content;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 20px 0 0 30px;
+}
+
+
+/* START INTRO SECTION STYLES */
+#intro-section h2, #intro-section p {
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-image: linear-gradient(to right, var(--blue), black);
+}
+
+#intro-section h2 {
+    padding: 5px 0 10px 30px;
+}
+
+#intro-section p {
+    padding: 0 30px 20px 30px;
+}
+/* END INTRO SECTION STYLES */
+
+
+.tile-scroll {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow: scroll;
+    overflow-y: hidden;
+}
+
+
+/* START TRENDING SONGS SECTION */
+#trending-songs {
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+}
+
+
+.trending-tile {
+    position: relative;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.details-bar {
+    position: absolute;
+    background-color: white;
+    opacity: 70%;
+    bottom: 0;
+    width: 311px;
+    height: 65px;
+}
+
+.details-bar h3, .details-bar dd {
+    color: var(--maroon);
+    padding-left: 10px;
+    margin: 0;
+}
+
+.details-bar h3, .details-bar dl {
+    margin-top: 10px;
+}
+
+.details-bar dl {
+    display: flex;
+    margin-left: 10px;
+    color: var(--maroon);
+}
+
+.details-bar dt {
+    font-style: italic;
+}
+
+audio {
+    position: absolute;
+    bottom: 150px;
+    right: 15px;
+    z-index: 3;
+}
+
+audio::-webkit-media-controls-mute-button {
+    background-color: white;
+    border-radius: 50%;
+}
+audio::-webkit-media-controls-play-button {
+    background-color: white;
+    border-radius: 50%;
+}
+audio::-webkit-media-controls-enclosure {
+    background-color: rgba(255, 255, 255, .5);
+}
+/* END TRENDING SONGS SECTION */
+
+
+/* START YOUR PLAYLISTS SECTION */
+#your-playlists-scroll {
+    background-color: var(--light-blue-2);
+}
+
+.your-playlists-tile {
+    background-color: var(--light-blue-1);
+    padding: 10px;
+    margin: 10px 10px;
+    text-align: center;
+}
+
+.your-playlists-tile h3, .your-playlists-tile p {
+    color: white;
+    margin: 0;
+}
+
+.your-playlists-tile p {
+    padding: 10px 0;
+}
+/* END YOUR PLAYLISTS SECTION */
+
+
+/* START CURATED PLAYLISTS SECTION */
+#curated-playlists-scroll {
+    background-color: var(--dark-blue-3);
+}
+
+.curated-playlists-tile {
+    background-color: var(--dark-blue-2);
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.curated-playlists-tile h3, .curated-playlists-tile p {
+    color: white;
+    margin: 0;
+}
+
+.curated-playlists-tile h3 {
+    padding: 5px 0 10px 0;
+    margin: 0 5px;
+}
+/* END CURATED PLAYLISTS SECTION */
+
+
+/* CUSTOM SCROLL BAR START */
+#trending-songs-scroll::-webkit-scrollbar {
+    width: 15px;
+}
+
+#trending-songs-scroll::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 15px var(--maroon);
+}
+
+#trending-songs-scroll::-webkit-scrollbar-thumb {
+    background: var(--maroon);
+    border-radius: 5px;
+}
+
+#trending-songs-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-blue-1);
+}
+
+#your-playlists-scroll::-webkit-scrollbar, #curated-playlists-scroll::-webkit-scrollbar {
+    width: 15px;
+}
+
+#your-playlists-scroll::-webkit-scrollbar-track, 
+#curated-playlists-scroll::-webkit-scrollbar-track  {
+    box-shadow: inset 0 0 15px var(--dark-blue-1);
+}
+
+#your-playlists-scroll::-webkit-scrollbar-thumb, 
+#curated-playlists-scroll::-webkit-scrollbar-thumb {
+    background: var(--dark-blue-1);
+    border-radius: 5px;
+}   
+
+#your-playlists-scroll::-webkit-scrollbar-thumb:hover,
+#curated-playlists-scroll::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+/* CUSTOM SCROLL BAR END */
+
+
+/* ---- FOOTER STYLES ---- */
+footer {
+    background-color: white;
+    padding-top: 30px;
+    margin-top: 60px;
+}
+
+footer p {
+    font-size: .75em;
+    color: var(--maroon);
+    text-align: center;
+}
+
+
+/* ---- MEDIUM SCREEN STYLES ---- */
+@media screen and (min-width: 834px) {
+/* ---- GLOBAL STYLES ---- */
+    body {
+        width: 100%;
+        max-width: 834px;
+    }
+
+    header {
+        width: 834px;
+    }
+
+    h1 {
+        visibility: hidden;
+        position: absolute;
+    }
+
+
+/* ---- HEADER STYLES ---- */
+
+/* START NAV STYLE */
+    nav ul {
+        overflow: visible;
+        position: absolute;
+        top: 0;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        max-width: 834px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    label, span, input {
+        display: none;
+    }
+
+    nav li a {
+        display: block;
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 10px 20px;
+        border: none;
+    }
+
+    nav li a:hover {
+        background-color: var(--maroon);
+    }
+
+    #home-link {
+        font-variant-caps: small-caps;
+        text-transform: none;
+        font-size: 1.75em;
+        font-weight: bold;
+    }
+
+    label span, input {
+        display: none;
+    }
+/* END NAV STYLE */
+
+
+/* ---- MAIN STYLES ---- */
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    main a {
+        justify-self: end;
+        margin-right: 15px;
+    }
+
+    main a:hover {
+        background-color: var(--dark-blue-1);
+    }
+
+    #intro-section {
+        grid-column: 1 / -1;
+    }
+
+    #trending-songs {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        max-width: 1280px;
+    }
+
+    #your-playlists {
+        grid-column: 1 / 2;
+        grid-row: 3 / -1;
+        display: grid;
+    }
+
+    #curated-playlists {
+        grid-column: 2 / 3;
+        grid-row: 3 / -1;
+        display: grid;
+    }
+
+    #your-playlists-scroll, #curated-playlists-scroll {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        height: 500px;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    #your-playlists a, #curated-playlists a {
+        justify-self: end;
+        margin-right: 15px;
+    }
+
+    .your-playlists-tile img, .curated-playlists-tile img {
+        float: left;
+    }
+}
