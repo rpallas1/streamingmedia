@@ -11,28 +11,38 @@
 
 
 /* ---- GLOBAL STYLES ---- */
-body {
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
     background-color: var(--dark-blue-1);
+}
+
+body {
     margin: 0 auto;
     max-width: 375px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    min-width: 350px;
+    font-family: Verdana, Geneva, Tahoma,   sans-serif;
     display: flex;
     flex-direction: column;
 }
 
 h1 {
-    font-size: 1.25em;
+    font-size: 1.75em;
     color: white;
     font-variant-caps: small-caps;
     text-align: center;
-    margin: 0;
     padding: 15px 0 5px 0;
-    position: absolute;
-    left: 130px;
+    background-color: var(--dark-blue-3);
+    width: 375px;
+    height: 40px;
 }
 
 h2, h3 {
     font-size: 1em;
+    text-transform: uppercase;
 }
 
 p, dl, dd {
@@ -44,26 +54,55 @@ p, dl, dd {
 /* ---- HEADER STYLES ---- */
 header {
     background-color: var(--dark-blue-3);
+}
+
+h1, nav {
     position: fixed;
-    width: 375px;
-    height: 60px;
     z-index: 10;
 }
+
+
+/* START INTRO SECTION STYLES */
+#intro-section {
+    scroll-margin-top: 100px;
+    margin-top: 60px;
+}
+
+#intro-section h2, #intro-section p {
+    color: white;
+    background-image: linear-gradient(to right, var(--blue), black);
+}
+
+#intro-section h2 {
+    padding: 10px 0 10px 30px;
+}
+
+#intro-section p {
+    padding: 0 30px 20px 30px;
+}
+/* END INTRO SECTION STYLES */
 
 
 /* START NAV MENU STYLES */
 nav h2 {
     visibility: hidden;
-    position: absolute;
+    height: 0px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
 }
 
 nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
     overflow: hidden;
-    background-color: white;
+    clear: both;
+    max-height: 0;
     transition: max-height .2s ease-out;
+}
+
+nav li {
+    list-style: none;
 }
 
 nav li a {
@@ -79,16 +118,10 @@ nav li a:hover, nav input:hover {
     background-color: var(--light-blue-2);
 } 
 
-nav ul {
-    clear: both;
-    max-height: 0;
-    transition: max-height .2s ease-out;
-}
-
 label {
     cursor: pointer;
     display: inline-block;
-    padding: 28px 20px;
+    padding: 27px 20px;
     position: relative;
     user-select: none;
 }
@@ -150,20 +183,17 @@ input:checked ~ label:not(.steps) span:after {
 /* ---- MAIN STYLES ---- */
 main {
     background-color: white;
-    position: relative;
-    top: 60px;
+}
+
+main section {
+    scroll-margin-top: 60px;
 }
 
 main h2 {
     background-color: white;
     color: var(--maroon);
-    text-transform: uppercase;
-    padding: 20px 0 0 30px;
-    margin-bottom: 10px;
-}
-
-main h3 {
-    text-transform: uppercase;
+    margin: 0 0 10px 30px;
+    padding-top: 30px;
 }
 
 main a {
@@ -176,27 +206,8 @@ main a {
     padding: 10px;
     text-align: center;
     border-radius: 5px;
-    margin: 20px 0 0 30px;
+    margin: 10px 0 0 30px;
 }
-
-
-/* START INTRO SECTION STYLES */
-#intro-section h2, #intro-section p {
-    margin: 0;
-    padding: 0;
-    color: white;
-    background-image: linear-gradient(to right, var(--blue), black);
-}
-
-#intro-section h2 {
-    padding: 5px 0 10px 30px;
-}
-
-#intro-section p {
-    padding: 0 30px 20px 30px;
-}
-/* END INTRO SECTION STYLES */
-
 
 .tile-scroll {
     display: grid;
@@ -209,14 +220,14 @@ main a {
 /* START TRENDING SONGS SECTION */
 #trending-songs {
     display: grid;
-    grid-template-rows: 70px 1fr 70px;
+    grid-template-rows: auto auto auto;
+    /* scroll-margin-top: 60px; */
 }
-
 
 .trending-tile {
     position: relative;
     padding: 0 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .details-bar {
@@ -225,27 +236,23 @@ main a {
     opacity: 70%;
     bottom: 0;
     width: 311px;
-    height: 65px;
-}
-
-.details-bar h3, .details-bar dd {
+    padding: 10px 0 0 10px;
     color: var(--maroon);
-    padding-left: 10px;
-    margin: 0;
-}
-
-.details-bar h3, .details-bar dl {
-    margin-top: 10px;
 }
 
 .details-bar dl {
     display: flex;
-    margin-left: 10px;
+    margin: 10px 10px 10px 0;
     color: var(--maroon);
 }
 
 .details-bar dt {
     font-style: italic;
+}
+
+.details-bar dd {
+    color: var(--maroon);
+    margin-left: 10px;
 }
 
 audio {
@@ -269,6 +276,14 @@ audio::-webkit-media-controls-enclosure {
 /* END TRENDING SONGS SECTION */
 
 
+.your-playlists-tile, .curated-playlists-tile {
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+}
+
+
 /* START YOUR PLAYLISTS SECTION */
 #your-playlists-scroll {
     background-color: var(--light-blue-2);
@@ -276,14 +291,6 @@ audio::-webkit-media-controls-enclosure {
 
 .your-playlists-tile {
     background-color: var(--light-blue-1);
-    padding: 10px;
-    margin: 10px 10px;
-    text-align: center;
-}
-
-.your-playlists-tile h3, .your-playlists-tile p {
-    color: white;
-    margin: 0;
 }
 
 .your-playlists-tile p {
@@ -299,19 +306,10 @@ audio::-webkit-media-controls-enclosure {
 
 .curated-playlists-tile {
     background-color: var(--dark-blue-2);
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-}
-
-.curated-playlists-tile h3, .curated-playlists-tile p {
-    color: white;
-    margin: 0;
 }
 
 .curated-playlists-tile h3 {
-    padding: 5px 0 10px 0;
-    margin: 0 5px;
+    margin: 5px 5px 10px 5px;
 }
 /* END CURATED PLAYLISTS SECTION */
 
@@ -355,12 +353,10 @@ audio::-webkit-media-controls-enclosure {
 }
 /* CUSTOM SCROLL BAR END */
 
-
 /* ---- FOOTER STYLES ---- */
 footer {
     background-color: white;
-    padding-top: 30px;
-    margin-top: 60px;
+    padding: 50px 0 10px 0;
 }
 
 footer p {
@@ -374,17 +370,13 @@ footer p {
 @media screen and (min-width: 834px) {
 /* ---- GLOBAL STYLES ---- */
     body {
-        width: 100%;
+        /* width: 100%; */
         max-width: 834px;
-    }
-
-    header {
-        width: 834px;
     }
 
     h1 {
         visibility: hidden;
-        position: absolute;
+        height: 1px;
     }
 
 
@@ -393,15 +385,11 @@ footer p {
 /* START NAV STYLE */
     nav ul {
         overflow: visible;
-        position: absolute;
         top: 0;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         max-width: 834px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        text-align: center;
+        align-items: center;
     }
 
     label, span, input {
@@ -413,9 +401,10 @@ footer p {
         text-decoration: none;
         color: white;
         text-transform: uppercase;
-        margin: 0;
-        padding: 10px 20px;
+        padding: 10px;
         border: none;
+        text-align: center;
+        height: 40px;
     }
 
     nav li a:hover {
@@ -458,7 +447,6 @@ footer p {
     #trending-songs {
         grid-column: 1 / -1;
         grid-row: 2 / 3;
-        max-width: 1280px;
     }
 
     #your-playlists {
@@ -473,7 +461,8 @@ footer p {
         display: grid;
     }
 
-    #your-playlists-scroll, #curated-playlists-scroll {
+    #your-playlists-scroll, 
+    #curated-playlists-scroll {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, 1fr);
         height: 500px;
@@ -481,12 +470,8 @@ footer p {
         overflow-x: hidden;
     }
 
-    #your-playlists a, #curated-playlists a {
-        justify-self: end;
-        margin-right: 15px;
-    }
-
-    .your-playlists-tile img, .curated-playlists-tile img {
+    .your-playlists-tile img, 
+    .curated-playlists-tile img {
         float: left;
     }
 }
