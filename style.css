@@ -7,6 +7,8 @@
     --light-blue-1: #0D8DFB;
     --light-blue-2: #2699FB;
     --maroon: #590242;
+    --light-background: white;
+    --light-text: white;
 }
 
 
@@ -22,8 +24,7 @@ html {
 
 body {
     margin: 0 auto;
-    max-width: 375px;
-    min-width: 350px;
+    width: 375px;
     font-family: Verdana, Geneva, Tahoma,   sans-serif;
     display: flex;
     flex-direction: column;
@@ -36,7 +37,7 @@ h2, h3 {
 
 p, dl, dd {
     font-size: 1em;
-    color: white;
+    color: var(--light-text);
 }
 
 
@@ -50,7 +51,7 @@ header {
 
 h1 {
     font-size: 1.25em;
-    color: white;
+    color: var(--light-text);
     text-transform: uppercase;
     padding: 5px 0 10px 30px; 
 }
@@ -65,8 +66,7 @@ nav {
     position: fixed;
     top: 0;
     background-color: var(--dark-blue-3);
-    width: 375px;
-    height: 60px;
+    width: 125px;
     z-index: 100;
 }
 
@@ -75,48 +75,6 @@ nav h2 {
     height: 0px;
 }
 
-nav ul {
-    overflow: hidden;
-    clear: both;
-    max-height: 0;
-    transition: max-height .2s ease-out;
-    width: fit-content;
-}
-
-nav li {
-    list-style: none;
-}
-
-nav li a {
-    display: block;
-    padding: 20px;
-    border-right: 1px solid var(--blue);
-    text-decoration: none;
-    text-transform: uppercase;
-    color: white;
-    background-color: var(--dark-blue-3);
-}
-
-nav li a:hover, nav input:hover {
-    background-color: var(--light-blue-2);
-} 
-
-#home-link {
-    position: absolute;
-    font-size: 1.75em;
-    font-variant-caps: small-caps;
-    text-align: center;
-    text-transform: none;
-    top: 0;
-    border-right: none;
-    padding: 15px 0 5px 0;
-    margin-left: 100px;
-    font-weight: bold;
-}
-
-#home-link:hover {
-    background-color: var(--dark-blue-3);
-}
 
 /* START HAMBURGER DROP DOWN */
 label {
@@ -125,6 +83,7 @@ label {
     padding: 27px 20px;
     position: relative;
     user-select: none;
+    z-index: 200;
 }
 
 label span {
@@ -141,9 +100,9 @@ label span:before, label span:after {
     content: '';
     display: block;
     height: 100%;
+    width: 100%;
     position: absolute;
     transition: all .2s ease-out;
-    width: 100%;
 }
 
 label span:before {
@@ -181,9 +140,51 @@ input:checked ~ label:not(.steps) span:after {
 /* END HAMBURGER DROP DOWN */
 
 
+nav ul {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav li a {
+    display: block;
+    padding: 20px;
+    border-right: 1px solid var(--blue);
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--light-text);
+    background-color: var(--dark-blue-3);
+}
+
+nav li a:hover, nav input:hover {
+    background-color: var(--light-blue-2);
+} 
+
+#home-link {
+    position: absolute;
+    top: 0;
+    font-size: 1.75em;
+    font-variant-caps: small-caps;
+    text-align: center;
+    text-transform: none;
+    border-right: none;
+    padding: 15px 0 11px 0;
+    width: 375px;
+    font-weight: bold;
+}
+
+#home-link:hover {
+    background-color: var(--dark-blue-3);
+}
+
+
 /* ---- MAIN STYLES ---- */
 main {
-    background-color: white;
+    background-color: var(--light-background);
 }
 
 main section {
@@ -191,19 +192,17 @@ main section {
 }
 
 main h2 {
-    background-color: white;
     color: var(--maroon);
     margin: 0 0 10px 30px;
     padding-top: 30px;
 }
 
 main a {
-    display: inline-block;
+    display: block;
     text-decoration: none;
-    color: white;
+    color: var(--light-text);
     background-color: var(--maroon);
     width: 150px;
-    height: fit-content;
     padding: 10px;
     text-align: center;
     border-radius: 5px;
@@ -227,16 +226,15 @@ main a {
 .trending-tile {
     position: relative;
     padding: 0 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .details-bar {
     position: absolute;
-    background-color: white;
-    opacity: 70%;
     bottom: 0;
-    width: 311px;
+    width: 100%;
     padding: 10px 0 0 10px;
+    background-color: rgba(255, 255, 255, 0.7);
     color: var(--maroon);
 }
 
@@ -270,7 +268,7 @@ audio::-webkit-media-controls-play-button {
     border-radius: 50%;
 }
 audio::-webkit-media-controls-enclosure {
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 /* END TRENDING SONGS SECTION */
 
@@ -279,7 +277,11 @@ audio::-webkit-media-controls-enclosure {
     padding: 10px;
     margin: 10px;
     text-align: center;
-    color: white;
+    color: var(--light-text);
+}
+
+.your-playlists-tile p, .curated-playlists-tile p {
+    padding: 10px 0;
 }
 
 
@@ -290,10 +292,6 @@ audio::-webkit-media-controls-enclosure {
 
 .your-playlists-tile {
     background-color: var(--light-blue-1);
-}
-
-.your-playlists-tile p {
-    padding: 10px 0;
 }
 /* END YOUR PLAYLISTS SECTION */
 
@@ -308,7 +306,7 @@ audio::-webkit-media-controls-enclosure {
 }
 
 .curated-playlists-tile h3 {
-    margin: 5px 5px 10px 5px;
+    padding: 0 5px;
 }
 /* END CURATED PLAYLISTS SECTION */
 
@@ -354,7 +352,7 @@ audio::-webkit-media-controls-enclosure {
 
 /* ---- FOOTER STYLES ---- */
 footer {
-    background-color: white;
+    background-color: var(--light-background);
     padding: 50px 0 10px 0;
 }
 
@@ -368,21 +366,15 @@ footer p {
 /* ---- MEDIUM SCREEN STYLES ---- */
 @media screen and (min-width: 834px) {
 /* ---- GLOBAL STYLES ---- */
-    body {
-        max-width: 834px;
-    }
-
-/* ---- NAV STYLES ---- */
-    nav {
+    body, nav {
         width: 834px;
     }
 
+/* ---- NAV STYLES ---- */
     nav ul {
         overflow: visible;
-        top: 0;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        max-width: 834px;
         align-items: center;
     }
 
@@ -417,7 +409,7 @@ footer p {
     main {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto auto auto;
+        grid-template-rows: auto auto;
     }
 
     main a {
@@ -429,24 +421,19 @@ footer p {
         background-color: var(--dark-blue-1);
     }
 
-    #intro-section {
-        grid-column: 1 / -1;
-    }
-
     #trending-songs {
         grid-column: 1 / -1;
-        grid-row: 2 / 3;
     }
 
     #your-playlists {
         grid-column: 1 / 2;
-        grid-row: 3 / -1;
+        grid-row: 2 / -1;
         display: grid;
     }
 
     #curated-playlists {
         grid-column: 2 / 3;
-        grid-row: 3 / -1;
+        grid-row: 2 / -1;
         display: grid;
     }
 
